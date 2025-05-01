@@ -113,6 +113,8 @@ export function GitHubPullRequest() {
     commits: 1,
     checks: 5,
     filesChanged: 1,
+    sponsored: false,
+    forked: false,
   });
   const handleTabClick = (tab: TabType) => {
     setActiveTab(tab);
@@ -123,9 +125,28 @@ export function GitHubPullRequest() {
       stars: prev.stars + 1,
     }));
   };
+  const handleForkIncrement = () => {
+    setPageDetails((prev) => ({
+      ...prev,
+      forked: !prev.forked,
+      forks: prev.forked ? prev.forks - 1 : prev.forks + 1,
+    }));
+  };
+  const handleSponsor = () => {
+    setPageDetails((prev) => ({
+      ...prev,
+      sponsored: !prev.sponsored,
+    }));
+  };
   return (
     <div className="min-h-screen bg-white dark:bg-[#0d1117] text-black dark:text-white">
-      <RepoHeader repoTitle={repoTitle} pageDetails={pageDetails} />
+      <RepoHeader
+        repoTitle={repoTitle}
+        pageDetails={pageDetails}
+        onStarClick={handleStarIncrement}
+        onForkClick={handleForkIncrement}
+        onSponsorClick={handleSponsor}
+      />
       <MainTabs />
       <div className="rounded  mx-auto mt-4">
         {/* Main Content */}
