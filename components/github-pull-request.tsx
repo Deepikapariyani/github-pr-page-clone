@@ -115,6 +115,7 @@ export function GitHubPullRequest() {
     filesChanged: 1,
     sponsored: false,
     forked: false,
+    isStarred: false,
   });
   const handleTabClick = (tab: TabType) => {
     setActiveTab(tab);
@@ -122,7 +123,8 @@ export function GitHubPullRequest() {
   const handleStarIncrement = () => {
     setPageDetails((prev) => ({
       ...prev,
-      stars: prev.stars + 1,
+      isStarred: !prev.isStarred,
+      stars: prev.isStarred ? prev.stars - 1 : prev.stars + 1,
     }));
   };
   const handleForkIncrement = () => {

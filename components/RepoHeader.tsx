@@ -80,7 +80,7 @@ export const RepoHeader: React.FC<repoTitleProps> = ({
                   className="text-sm h-8 text-black dark:text-white border border-gray-600 dark:bg-[#25292E] "
                   onClick={onSponsorClick}
                 >
-                  <Check className="h-4 w-4 text-green-500 ml-2" />
+                  <Check className="h-4 w-4 text-green-500" />
                   Sponsored
                 </Button>
               )}
@@ -126,8 +126,8 @@ export const RepoHeader: React.FC<repoTitleProps> = ({
                   className="text-sm h-8 text-black dark:text-white border border-gray-600 dark:bg-[#25292E]"
                   onClick={onForkClick}
                 >
-                  <Check className="h-4 w-4 text-green-500 ml-2" />
-                  Fork
+                  <Check className="h-4 w-4 text-green-500" />
+                  Forked
                   <Badge
                     variant="secondary"
                     className="text-xs text-black dark:bg-[#2F3742] dark:text-white"
@@ -137,21 +137,39 @@ export const RepoHeader: React.FC<repoTitleProps> = ({
                 </Button>
               )}
 
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-sm h-8 text-black dark:text-white border border-gray-600 dark:bg-[#25292E]"
-                onClick={onStarClick}
-              >
-                <Star className="h-4 w-4" />
-                Star
-                <Badge
-                  variant="secondary"
-                  className="text-xs text-black dark:bg-[#2F3742] dark:text-white"
+              {pageDetails.isStarred == false ? (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-sm h-8 text-black dark:text-white border border-gray-600 dark:bg-[#25292E]"
+                  onClick={onStarClick}
                 >
-                  {formatNumber(pageDetails.stars)}
-                </Badge>
-              </Button>
+                  <Star className="h-4 w-4" />
+                  Star
+                  <Badge
+                    variant="secondary"
+                    className="text-xs text-black dark:bg-[#2F3742] dark:text-white"
+                  >
+                    {formatNumber(pageDetails.stars)}
+                  </Badge>
+                </Button>
+              ) : (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-sm h-8 text-black dark:text-white border border-gray-600 dark:bg-[#25292E]"
+                  onClick={onStarClick}
+                >
+                  <Check className="h-4 w-4 text-green-500" />
+                  Starred
+                  <Badge
+                    variant="secondary"
+                    className="text-xs text-black dark:bg-[#2F3742] dark:text-white"
+                  >
+                    {formatNumber(pageDetails.stars)}
+                  </Badge>
+                </Button>
+              )}
             </div>
           </div>
         </div>
