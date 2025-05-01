@@ -44,6 +44,21 @@ export function GitHubPullRequest() {
   const [pullRequestTitle, setPullRequestTitle] = useState({
     prTitle: " docs: fix typo in CSS selector",
     prNumber: "1234",
+    isMerged: true,
+    name: (
+      <>
+        <Link
+          href="#"
+          className="text-gray-600 dark:text-gray-400 hover:underline"
+        >
+          kodiakhq
+        </Link>{" "}
+      </>
+    ),
+    comment: "merged 1 commit into",
+    to: "shadcn-ui:main",
+    from: " Yordanliiev2002:main",
+    date: "12 Oct 2023",
   });
   const [sidePaneldata, setSidePaneldata] = useState({
     assignies: "No one assigned",
